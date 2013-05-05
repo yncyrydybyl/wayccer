@@ -1,7 +1,7 @@
 wayccer
 =======
 
-alarms on your way - #angels a watching you
+alarms on your way - #angels are watching you
 
 mvp
 ===
@@ -18,7 +18,7 @@ features
 location aggregation
 ====================
 
- * cinema which play movies i want to watch
+ * cinemas playing movies you want to watch
  * places from adressbook
  * traffic control
  * traffic jam
