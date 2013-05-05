@@ -5,15 +5,16 @@ alarms on your way - #angels are watching you
 
 mvp
 ===
-
- * get alarm when 100meters away from ingress portals
+ * create alarmhotspots by creating them on a map
+ * get alarm when close to alarmhotspots
+ * simulator
 
 features
 ========
 
- * easy login
  * set alarms manually
-
+ * subscribe to location feeds
+ * iphone, android, wp service 
 
 location aggregation
 ====================
@@ -22,6 +23,7 @@ location aggregation
  * places from adressbook
  * traffic control
  * traffic jam
+ * ingress portals
  * shopping offers
  * discover parties around you
  * social status within last 10 minutes
