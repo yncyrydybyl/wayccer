@@ -139,6 +139,9 @@ function checkForAlarms(lat,lng) {
 		console.log(entries);
 		console.log(entries.length);
 		if(entries.length > 0) {
+			var alarm = document.getElementById("alarmsignal");
+			console.log(alarm);
+			alarm.play();
 			for(entry in entries) {
 				alert("ALARM: "+ entries[entry].get("msg"));
 			} 
