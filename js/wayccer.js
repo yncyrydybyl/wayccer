@@ -40,13 +40,13 @@ function get() {
 	});
 }
 
-function storeGeo() {
+function storeGeo(lat, lon, msg) {
 	var content = new NetmeraContent("alarms");
-	var location = new NetmeraGeoLocation(52.5, 13.4);
-	content.add("msg", "omg");
+	var location = new NetmeraGeoLocation(lat, lon);
+	content.add("msg", msg);
 	content.add("location", location);
 	content.create(function() {
-     		// content.getPath();
+     		console.log(content.getPath());
 	}, function(error) {
      		//error.getMessage();
 	});
@@ -131,7 +131,50 @@ function logintwitter() {
 		});
 
 }
-logintwitter();
+function checkForAlarms(lat,lng) {
+	var service = new NetmeraService("alarms");
+	var center = new NetmeraGeoLocation(lat,lng);
+	var distance = 0.1; // 4 kilometers
+	service.circleSearch(center, distance, "location", function(entries) { 
+		console.log(entries);
+		console.log(entries.length);
+		if(entries.length > 0) {
+			for(entry in entries) {
+				alert("ALARM: "+ entries[entry].get("msg"));
+			} 
+		}
+		else{
+			alert ("no alarms");
+		}
+	}
+	, function(error) {
+ 		   // Identify 'error' with error.getCode()
+	});
+}
+
+function showAlarms(){
+// ToDo: use corners of the map
+	var service = new NetmeraService("alarms");
+	var corner1 = new NetmeraGeoLocation(52, 13);
+	var corner2 = new NetmeraGeoLocation(53, 14);
+	service.boxSearch(corner1, corner2, "location", function(entries) { 
+	console.log(entries.length);
+	for (entry in entries) {
+		var alarm = entries[entry];
+		drawAlarm(
+			alarm.getNetmeraGeoLocation("location").getLatitude(),
+			alarm.getNetmeraGeoLocation("location").getLongitude(),
+			alarm.get("msg"));
+	}
+}, function(error) {
+    // Identify 'error' with error.getCode()
+});
+
+
+
+}
+
+//logintwitter();
 //deleteFremdContent();
 //deleteOwnContent();
 //doAsUser();
